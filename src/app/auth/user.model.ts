@@ -1,0 +1,25 @@
+export class User {
+  constructor(
+    public email:string,
+    public id:string,
+    private _token:string,
+    private _tokenExpirationDate:Date
+  ){}
+
+  get token(){
+    if(!this._tokenExpirationDate || new Date() > this._tokenExpirationDate)
+      return null;
+    return this._token;
+  }
+}
+
+/*
+displayName: ""
+email: "sandeep.zoon@gmail.com"
+expiresIn: "3600"
+idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2OGNhNTBjZTY0YjQxYWIzNGZhMDM1NzIwMmQ5ZTk0ZTcyYmQ2ZWMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc2FtcGxlLWNlZmE0IiwiYXVkIjoic2FtcGxlLWNlZmE0IiwiYXV0aF90aW1lIjoxNTY2OTQ2NzcyLCJ1c2VyX2lkIjoiSkhic2pMVVNkMWJHSU5NcTNqWjZYbk5tdDhXMiIsInN1YiI6IkpIYnNqTFVTZDFiR0lOTXEzalo2WG5ObXQ4VzIiLCJpYXQiOjE1NjY5NDY3NzIsImV4cCI6MTU2Njk1MDM3MiwiZW1haWwiOiJzYW5kZWVwLnpvb25AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInNhbmRlZXAuem9vbkBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.XR8ijkSXJBj94qv0JVgWK-L22n6yyVhK0lMsRvPWeZYoEouFvTK3zPfACzzpPZgTWDzRWkjwCweoTCKaMv6xJ9CdDyhYOBQ5rhsDB6pOeiyKVEPIiquPKYGcRaok1H9PPamDIVljPzP72g0buWriZYaydn9ZcepYupgqA0Fe4nuzVr58WsBv8W7d5xtBpRlmmCfdnQ7X0AWWEanKcKfe7wt3TG5kjmsYobWlbyVW-J3Ri5K3PQu8lkib25_WXFkSBeJ8iCf7ggOIY0XZ5IFEy6_4iB782c545zcXe3Bzu1pxyfqCQ23M9VECAsK_gR5yY73Vagc6b8fUHFhLCVBAyQ"
+kind: "identitytoolkit#VerifyPasswordResponse"
+  localId: "JHbsjLUSd1bGINMq3jZ6XnNmt8W2"
+refreshToken: "AEu4IL1_WomnxL9BGk_YVyQxo3MD_OKn8n6uJULLOOUYpJSrKs5lu-T-ZxNk6QHzg_LRmK_XRJWIv5uwDMGlBKIrLj0L1OOrTVmy0gXsBsU5Th8eeAZk8E_XfUdBj2fNSmhA2mSPv0RBbebsSjkY73gP7sE5wTPsiE7iDsKnjPRRP7PQa3m3Ph8-cnqo-OwTTwufh4W1feX-DmQO-aa7TmYFZUZ3rqmBCw"
+registered: true
+* */

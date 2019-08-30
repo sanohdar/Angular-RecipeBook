@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="alert alert-danger" *ngIf="!!error">{{ error}}</div>
+    <div style="text-align: center" *ngIf="isLoading">
+      <app-spinner></app-spinner>
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onAuthenticate(authForm)" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          name="email"
+          ngModel
+          required
+          email>
+        <span class="help-block" *ngIf="!authForm.valid && authForm.touched">Invalid Email U got Man....</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          ngModel
+          required
+          minlength="6">
+        <span class="help-block" *ngIf="!authForm.valid && authForm.touched">Min 6 carat of Gold or Dimonde Bitch....</span>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">{{ isLogginMode ? 'Login' : authForm.valid ? 'Welcome' : 'Sign Up'}}</button> |
+        <button type="button" class="btn btn-primary" (click)="onSwitch()">Switch To {{ !isLogginMode ? 'Login' : 'Sign Up' }}</button>
+      </div>
+    </form>
+  </div>
+</div>
